@@ -1,0 +1,42 @@
+%{
+%}
+ 
+%%
+ 
+[6-9][0-9]{9} {printf("\n mobile number valid\n");}
+.+ {printf("\n mobile number invalid\n");}
+
+%%
+
+int yywrap()
+{}
+
+int main()
+{
+printf("\n enter mobile number:");
+yylex();
+}
+output:
+Microsoft Windows [Version 10.0.22000.1936]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\jamal>cd compiler
+
+C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\jamal\compiler>flex mobile.l.txt
+
+C:\Users\jamal\compiler>set path=C:\MinGW\bin
+
+C:\Users\jamal\compiler>gcc lex.yy.c
+
+C:\Users\jamal\compiler>a
+
+ enter mobile number:123456789
+
+ mobile number invalid
+
+8247658444
+
+ mobile number valid
+
