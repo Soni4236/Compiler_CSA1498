@@ -1,0 +1,103 @@
+%{
+int nmacro, nheader;
+%}
+%%
+^#define { nmacro++; }
+^#include { nheader++; }
+.|\n {  }
+%%
+int yywrap(void) {
+return 1;
+}
+int main(int argc, char *argv[]) {
+yyin = fopen(argv[1], "r");
+yylex();
+printf("Number of macros defined = %d\n", nmacro);
+printf("Number of header files included = %d\n", nheader);
+fclose(yyin);
+}
+output:
+Microsoft Windows [Version 10.0.22000.1936]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\jamal>cd compiler
+
+C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\jamal\compiler>flex macros.l.txt
+
+C:\Users\jamal\compiler>set path=C:\MinGW\bin
+
+C:\Users\jamal\compiler>gcc lex.yy.c
+
+C:\Users\jamal\compiler>a
+Number of macros defined = 0
+^C
+C:\Users\jamal\compiler>a
+iam an ncc cadet
+Number of macros defined = 0
+^C
+C:\Users\jamal\compiler>a
+<html>
+<body>
+</body>
+</html>
+Number of macros defined = 0
+^C
+C:\Users\jamal\compiler>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
