@@ -1,0 +1,57 @@
+%{
+int tags;
+%}
+%%
+"<"[^>]*>  { tags++; printf("%s \n", yytext); }
+.|\n { }
+%%
+int yywrap(void) {
+return 1; }
+int main(void)
+{
+FILE *f;
+char file[10];
+printf("Enter File Name : ");
+scanf("%s",file);
+f = fopen(file,"r");
+yyin = f;
+yylex();
+printf("\n Number of html tags: %d",tags);
+fclose(yyin);  
+}
+  output:
+  Microsoft Windows [Version 10.0.22000.1936]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\jamal>cd compiler
+
+C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\jamal\compiler>flex html.l.txt
+
+C:\Users\jamal\compiler>set path=C:\MinGW\bin
+
+C:\Users\jamal\compiler>gcc lex.yy.c
+
+C:\Users\jamal\compiler>a
+Enter File Name : jamalamma
+
+ Number of html tags: 0
+C:\Users\jamal\compiler>a
+Enter File Name : <html>
+<body>
+<body>
+</body>
+</body>
+</html>
+ Number of html tags: 2
+C:\Users\jamal\compiler>
+
+
+
+
+
+
+
+
+
