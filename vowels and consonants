@@ -1,0 +1,43 @@
+%{
+int vow count=0;
+int const count=0;
+%}
+
+%%
+
+[aeiouAEIOU] {vow count++;}
+
+[a-zA-Z] {const count++;}
+
+%%
+int  yywrap(){}
+int main()
+{
+printf("enter the string of vowels and consonents:");
+yylex();
+printf("the number of vowels are:%d\n",vow count);
+printf("the number of consonents are:%d\n",const count);
+return 0;
+}
+output:
+Microsoft Windows [Version 10.0.22000.1936]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\jamal>cd compiler
+
+C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\jamal\compiler>flex vowels.l.txt
+
+C:\Users\jamal\compiler>set path=C:\MinGW\bin
+
+C:\Users\jamal\compiler>gcc lex.yy.c
+
+C:\Users\jamal\compiler>a
+Enter the string of vowels and consonants:
+this is jamalamma
+
+Number of vowels are:6
+Number of consonants:9
+
+C:\Users\jamal\compiler>
