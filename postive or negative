@@ -1,0 +1,51 @@
+%{
+int positive_no = 0, negative_no = 0;
+%}
+%%
+^[-][0-9]+ {negative_no++;
+			printf("negative number = %s\n",
+				yytext);} // negative number
+
+[0-9]+ {positive_no++;
+		printf("positive number = %s\n",
+				yytext);} // positive number	
+%%
+int yywrap(){}
+int main()											
+{
+yylex();
+printf ("number of positive numbers = %d,"
+		"number of negative numbers = %d\n",
+				positive_no, negative_no);
+return 0;
+}
+output:
+Microsoft Windows [Version 10.0.22000.1936]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\jamal>cd compiler
+
+C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\jamal\compiler>flex positive.l.txt
+flex: can't open positive.l.txt
+
+C:\Users\jamal\compiler>flex positivenegative.l.txt
+
+C:\Users\jamal\compiler>set path=C:\MinGW\bin
+
+C:\Users\jamal\compiler>gcc lex.yy.c
+
+C:\Users\jamal\compiler>a
+number of positive numbers = 0,number of negative numbers = 0
+
+C:\Users\jamal\compiler>a
+1
+positive number = 1
+
+-19
+negative number = -19
+
+
+
+
