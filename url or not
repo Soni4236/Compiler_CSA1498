@@ -1,0 +1,38 @@
+%%
+((http)|(ftp))s?:\/\/[a-zA-Z0-9](.[a-z])+(.[a-zA-Z0-9+=?]) {printf("\nURL Valid\n");}
+
+.+ {printf("\nURL Invalid\n");}
+
+%%
+void main()
+{
+	printf("\nEnter URL : ");
+	yylex();
+	printf("\n");
+}
+int yywrap()
+{
+}
+output:
+Microsoft Windows [Version 10.0.22000.1936]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\jamal>cd compiler
+
+C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\jamal\compiler>flex url.l.txt
+
+C:\Users\jamal\compiler>set path=C:\MinGW\bin
+
+C:\Users\jamal\compiler>gcc lex.yy.c
+
+C:\Users\jamal\compiler>a
+
+Enter URL : jam@123
+
+URL Invalid
+
+jamalammabezawada25@gmail.com
+
+URL Invalid
