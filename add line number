@@ -1,0 +1,33 @@
+%{
+int ln=0;
+%}
+
+%%
+
+.* {ln++;fprintf(yyout,"\n%d:%s",ln,yytext);}
+%%
+int yywrap(){}
+
+int main()
+{
+yyin=fopen("simple.txt","r");
+yyout=fopen("out.txt","w");
+yylex();
+}
+output:
+Microsoft Windows [Version 10.0.22000.1936]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\jamal>cd compiler
+
+C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\jamal\compiler>flex line.l.txt
+
+C:\Users\jamal\compiler>set path=C:\MinGW\bin
+
+C:\Users\jamal\compiler>gcc lex.yy.c
+
+C:\Users\jamal\compiler>a
+This is Jamalamma
+         1 This is Jamalamma
